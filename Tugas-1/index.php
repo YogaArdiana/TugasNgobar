@@ -1,42 +1,69 @@
 <?php
 require_once "Function/perhitungan.php";
+require_once "Function/selected.php";
+require_once "Function/valueFormHistory.php";
 ?>  
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tugas Ngobar</title>
-    <style>
-        *{
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-size: 25px;
-        }
-    </style>
-</head>
-<body>
-    <?php
-        $perhitungan = new Perhitungan();
-        $luasPersegiPanjang = $perhitungan->luasPersegiPanjang(20, 40);
-        $kelilingPersegiPanjang = $perhitungan->kelilingPersegiPanjang(20, 40);
-        $luasKelilingPersegi = $perhitungan->luasKelilingPersegi(20);
-        $luasSegitiga = $perhitungan->luasSegitiga(20, 30);
-        $luasLingkaran = $perhitungan->luasLingkaran(20);
-        $kelilingLingkaran = $perhitungan->kelilingLingkaran(20);
-        echo $luasPersegiPanjang;
-        echo "<br>";
-        echo $kelilingPersegiPanjang;
-        echo "<br>";
-        echo $luasKelilingPersegi;
-        echo "<br>";
-        echo $luasSegitiga;
-        echo "<br>";
-        echo $luasLingkaran;
-        echo "<br>";
-        echo $kelilingLingkaran;
-    ?>
+<?php
+$perhitungan = new Perhitungan();
+?>
+
+<?php
+include 'mainTemplate/header.php';
+?>
 
 
-</body>
-</html>
+    <main>
+        <div class="Container">   
+            <div class="group">
+                <div class="badge">
+                    Tugas Membuat Perhitungan Dengan
+                    <h2>Class Dan Function</h2>
+                </div>
+                <div class="badge">
+                        <p>Pilih Opsi</p>
+                        <form action="" method="GET">
+                        <div class="" style="display: flex ; gap: 4px;">
+                            <?php
+                            include "partials/select.php"
+                            ?>
+                            <button class="button-coba">
+                                Coba
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="mainReturn">
+                <form action="" method="GET">
+                    <?php
+                    include "partials/main/mainFormLogic.php";
+                    ?>
+                    <input type="text" name="getAnswer" value="1" hidden>
+                    <button class="butoon-hitung">Hitung</button>
+                </form>
+            </div>
+
+
+            <!-- Answer -->
+            <?php
+            if(isset($_GET['getAnswer'])){
+            ?>
+            <div class="mainReturn" style="margin-top:10px ;">
+                <p>Answer For</p>
+                <?php
+                include "partials/main/mainAnswerLogic.php";
+                ?>
+            </div>
+            <?php
+            }
+            ?>
+        </div>
+    </main>
+
+
+<?php
+include "mainTemplate/footer.php";
+?>

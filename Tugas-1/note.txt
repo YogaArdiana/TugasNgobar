@@ -1,3 +1,5 @@
 Nama : Komang Yoga Ardiana
+NIM : 2401010105
 Jurusan : TI-MTI
 Tugas : 1
+Soal : Membuat Perhitungan Dengan Class Dan Function Di PHP
